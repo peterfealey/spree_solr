@@ -9,7 +9,9 @@ Installation
 Add spree_solr to your Gemfile:
 
 ```ruby
-gem 'spree_solr'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'spree_solr', :git => 'git://github.com/devinterface/spree_solr.git', :branch => '2-2-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -36,4 +38,4 @@ Simply add this require statement to your spec_helper:
 require 'spree_solr/factories'
 ```
 
-Copyright (c) 2014 [name of extension creator], released under the New BSD License
+Copyright (c) 2014 DevInterface snc (http://www.devinterface.com), released under the New BSD License
