@@ -15,6 +15,7 @@ module SpreeSolr
 
       def add_initializer
         template "config/initializers/spree_solr.rb"
+        template "config/initializers/string.rb"
       end
     end
   end

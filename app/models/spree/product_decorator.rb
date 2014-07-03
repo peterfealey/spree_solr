@@ -3,15 +3,15 @@ module Spree
 
     #SOLR
     searchable :if => :indexable? do
-      text :name, :boost => 5.0, :more_like_this => true
-      text :description, :boost => 3.0, :more_like_this => true
+      text :safe_name, :boost => 5.0, :more_like_this => true
+      text :safe_description, :boost => 3.0, :more_like_this => true
       text :taxon_names_text do
         taxon_names.join(',')
       end
       time :available_on
       time :updated_at
       double :price
-      string :name
+      string :safe_name
       string :taxon_names, :multiple => true
       integer :taxons_ids, :multiple => true
       integer :id
@@ -36,6 +36,14 @@ module Spree
 
     def properties_text
       product_properties.map { |pp| "#{pp.property.name}||#{pp.value}" } if product_properties.present?
+    end
+
+    def safe_description
+      self.description.strip_control_and_extended_characters
+    end
+
+    def safe_name
+      self.name.strip_control_and_extended_characters
     end
   end
 end
