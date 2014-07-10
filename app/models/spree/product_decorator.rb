@@ -39,11 +39,11 @@ module Spree
     end
 
     def safe_description
-      self.description.strip_control_and_extended_characters
+      self.description.strip_control_and_extended_characters if self.description.present?
     end
 
     def safe_name
-      self.name.strip_control_and_extended_characters
+      self.name.strip_control_and_extended_characters if self.name.present?
     end
   end
 end
